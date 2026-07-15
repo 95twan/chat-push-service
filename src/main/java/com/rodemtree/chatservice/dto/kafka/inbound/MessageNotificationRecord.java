@@ -2,9 +2,19 @@ package com.rodemtree.chatservice.dto.kafka.inbound;
 
 import com.rodemtree.chatservice.constant.MessageType;
 import com.rodemtree.chatservice.dto.domain.ChannelId;
+import com.rodemtree.chatservice.dto.domain.MessageSeqId;
 import com.rodemtree.chatservice.dto.domain.UserId;
 
-public record MessageNotificationRecord(UserId userId, ChannelId channelId, String username, String content) implements RecordInterface {
+import java.util.List;
+
+public record MessageNotificationRecord(
+        UserId userId,
+        ChannelId channelId,
+        MessageSeqId messageSeqId,
+        String username,
+        String content,
+        List<UserId> participantIds
+) implements RecordInterface {
 
     @Override
     public String type() {
